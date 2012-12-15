@@ -10,6 +10,6 @@ An INI file stores information in logical groupings, called "sections." For exam
 the WIN.INI file contains a section called "[Desktop]". Within each section, actual data
 values are stored in named keys. Keys take the form:
 
-<keyname> = <value>
+keyname = value
 
 A FileName is passed to the JIniFile constructor and identifies the INI file that the object accesses.
