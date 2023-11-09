@@ -17,10 +17,11 @@ import java.util.List;
  * A FileName is passed to the JIniFile constructor and identifies the INI file that the object accesses.</p>
  *
  * @author Andreas Norman
- * @version 1.0
+ * @version 1.0.1
  */
 public class JIniFile extends ArrayList<String> {
-    private final File userFileName;
+	private static final long serialVersionUID = 1L;
+	private final File userFileName;
 
     /**
      * Constructor JIniFile
@@ -68,7 +69,7 @@ public class JIniFile extends ArrayList<String> {
     /**
      * Call UpdateFile to flush buffered reads from and writes to the INI file to disk.
      *
-     * @throws IOException if not succesful
+     * @throws IOException if not successful
      */
     public void updateFile() throws IOException {
         try (BufferedWriter outbuf = new BufferedWriter(new FileWriter(userFileName, false))) {
@@ -179,7 +180,7 @@ public class JIniFile extends ArrayList<String> {
     }
 
     /**
-     * Call Readbool to read a string value from an INI file. Section identifies the
+     * Call ReadBool to read a string value from an INI file. Section identifies the
      * section in the file that contains the desired key. key is the name of the key
      * from which to retrieve the value. defaultValue is the boolean value to return if the:<br>
      * - section does not exist.<br>
@@ -195,7 +196,7 @@ public class JIniFile extends ArrayList<String> {
         boolean value = defaultValue;
         if (valuePosition(section, key) > 0) {
             int strLen = key.length() + 1;
-            value = Boolean.getBoolean(get(valuePosition(section, key)).substring(strLen));
+            value = Boolean.valueOf(get(valuePosition(section, key)).substring(strLen));
         }
         return value;
     }
